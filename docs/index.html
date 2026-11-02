@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Axis Map Generator — Next-Gen Procedural Cartography Workstation</title>
-  <meta name="description" content="A clean, minimal, modern procedural fantasy cartography workstation for worldbuilders, game developers, authors, and tabletop RPG creators. Native Rust + Tauri v2 & Web Edition.">
-  <meta name="keywords" content="Fantasy Map Generator, Cartography, Worldbuilding, Procedural Generation, Tauri, Rust, Canvas, RPG Maps, Tolkien Map, Heightmap Export, Axis Tools">
+  <meta name="description" content="A clean, minimal, modern procedural fantasy cartography workstation for worldbuilders, game developers, authors, and tabletop RPG creators. Native Rust + Tauri v2 Desktop App.">
+  <meta name="keywords" content="Fantasy Map Generator, Cartography, Worldbuilding, Procedural Generation, Tauri, Rust, Desktop App, RPG Maps, Tolkien Map, Heightmap Export, Axis Tools">
   <meta property="og:title" content="Axis Map Generator — Procedural Cartography Workstation">
   <meta property="og:description" content="Generate vast fantasy worlds, multi-realm political territories, isometric Tolkien mountain ridges, and export 16-bit heightmaps for Blender & Unreal Engine 5.">
-  <meta property="og:image" content="assets/Axis%20Map%20Generator%202.png">
+  <meta property="og:image" content="screenshots/workstation-main.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://moopuu.github.io/Axis-Map-Generator/">
   <link rel="icon" type="image/png" href="assets/logo.png">
@@ -34,8 +34,9 @@
       </a>
 
       <nav class="nav-links">
+        <a href="#overview" class="nav-link">Overview</a>
         <a href="#features" class="nav-link">Features</a>
-        <a href="#demo" class="nav-link">Interactive Map</a>
+        <a href="#gallery" class="nav-link">Screenshots</a>
         <a href="#styles" class="nav-link">13 Styles</a>
         <a href="#downloads" class="nav-link">Downloads</a>
         <a href="#specs" class="nav-link">Specs</a>
@@ -48,11 +49,11 @@
           </svg>
           <span>GitHub</span>
         </a>
-        <a href="app/" target="_blank" class="btn btn-primary btn-sm">
-          <span>Launch Web App</span>
+        <a href="#downloads" class="btn btn-primary btn-sm">
+          <span>Get v2.0.0</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
           </svg>
         </a>
       </div>
@@ -64,7 +65,7 @@
     <div class="container">
       <div class="hero-badge-wrap">
         <span class="hero-badge-dot"></span>
-        <span class="hero-badge-text">v2.0.0 Native & Web Workstation Edition</span>
+        <span class="hero-badge-text">v2.0.0 Desktop Release • Native Rust + Tauri Architecture</span>
       </div>
 
       <h1 class="hero-title">
@@ -73,7 +74,7 @@
       </h1>
 
       <p class="hero-subtitle">
-        A clean, minimal, modern workstation designed for worldbuilders, game developers, authors, and tabletop RPG creators. Generate multi-realm fantasy worlds with isometric mountain cordilleras, clustered tree groves, meandering hydrology, and export directly to 16-bit 3D heightmaps.
+        A clean, minimal, modern desktop application designed for worldbuilders, game developers, authors, and tabletop RPG creators. Generate multi-realm fantasy worlds with miniature Tolkien mountain cordilleras, clustered tree groves, meandering hydrology, and export directly to 16-bit 3D heightmaps.
       </p>
 
       <div class="hero-cta-group">
@@ -86,12 +87,13 @@
           <span>Download for Windows</span>
         </a>
 
-        <a href="app/" target="_blank" class="btn btn-secondary btn-lg">
+        <a href="#gallery" class="btn btn-secondary btn-lg">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
           </svg>
-          <span>Launch Online Workstation</span>
+          <span>Explore Screenshots</span>
         </a>
 
         <a href="https://github.com/MooPuu/Axis-Map-Generator" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg">
@@ -99,30 +101,19 @@
         </a>
       </div>
 
-      <!-- Hero Showcase Window with Embedded App -->
-      <div id="demo" class="hero-preview-container">
+      <!-- Hero App Screenshot Mockup -->
+      <div class="hero-preview-container">
         <div class="preview-window-bar">
           <div class="window-dots">
             <span class="window-dot dot-red"></span>
             <span class="window-dot dot-yellow"></span>
             <span class="window-dot dot-green"></span>
           </div>
-          <div class="window-title">Axis Map Generator — Live Workstation Preview</div>
-          <div style="font-size: 0.8rem; color: #10b981; font-weight: 600;">● Online Ready</div>
+          <div class="window-title">Axis Map Generator — Desktop Workstation v2.0.0</div>
+          <div style="font-size: 0.8rem; color: #10b981; font-weight: 600;">● Native Build</div>
         </div>
         <div class="hero-preview-screen">
-          <iframe src="app/" title="Axis Map Generator Live Workstation"></iframe>
-          <div class="preview-overlay-btn">
-            <a href="app/" target="_blank" class="btn btn-primary btn-sm" title="Open full screen in a new tab">
-              <span>Open Fullscreen</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <polyline points="9 21 3 21 3 15"></polyline>
-                <line x1="21" y1="3" x2="14" y2="10"></line>
-                <line x1="3" y1="21" x2="10" y2="14"></line>
-              </svg>
-            </a>
-          </div>
+          <img src="screenshots/workstation-main.png" alt="Axis Map Generator Desktop Workstation" style="width: 100%; height: auto; display: block; object-fit: cover;">
         </div>
       </div>
 
@@ -148,12 +139,116 @@
     </div>
   </section>
 
+  <!-- Overview Section -->
+  <section id="overview" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">App Overview</div>
+        <h2 class="section-title">The Modern Cartography Suite</h2>
+        <p class="section-subtitle">
+          Axis Map Generator is part of the <strong>Axis Tools</strong> open-source creative ecosystem. Engineered with a native <strong>Rust + Tauri v2</strong> desktop architecture and a specialized 2D canvas engine, it replaces heavy, bloated web wrappers with a standalone binary that starts instantly, uses zero telemetry, and works completely offline.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; margin-top: 40px;">
+        <div>
+          <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; line-height: 1.3;">
+            Precision Worldbuilding at Your Fingertips
+          </h3>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+            Whether you are drawing maps for a high-fantasy novel, building a world for an upcoming D&amp;D campaign, or generating heightmaps for a game prototype in Unreal Engine or Unity, Axis Map Generator gives you complete creative freedom.
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--text-primary);">
+            <li style="display: flex; align-items: center; gap: 10px;">
+              <span style="color: var(--amber-primary); font-size: 1.1rem;">✔</span>
+              <span><strong>Delicate Tolkien Ridgelines:</strong> Naturally clustered peaks with shadow hatching.</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 10px;">
+              <span style="color: var(--amber-primary); font-size: 1.1rem;">✔</span>
+              <span><strong>Hydraulic Flow Modeling:</strong> Rivers that meander, accumulate, and reach the sea.</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 10px;">
+              <span style="color: var(--amber-primary); font-size: 1.1rem;">✔</span>
+              <span><strong>100% Offline &amp; Private:</strong> No cloud dependencies, logins, or tracking.</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 10px;">
+              <span style="color: var(--amber-primary); font-size: 1.1rem;">✔</span>
+              <span><strong>Zero Setup Needed:</strong> Single-file portable executable ready to run anywhere.</span>
+            </li>
+          </ul>
+        </div>
+        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-card); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);">
+          <img src="screenshots/fantasy-atlas-map.png" alt="Fantasy Atlas Map Preview" style="width: 100%; display: block;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots Gallery Section -->
+  <section id="gallery" class="section" style="background: rgba(18, 23, 34, 0.35);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Visual Gallery</div>
+        <h2 class="section-title">Screenshots from the App</h2>
+        <p class="section-subtitle">
+          Take a closer look at the actual interface, the high-detail regional zoom inspector, and the fine hand-drawn cartographic rendering.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px;">
+        <!-- Screenshot 1 -->
+        <div class="feature-card" style="padding: 16px;">
+          <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-subtle); margin-bottom: 16px;">
+            <img src="screenshots/workstation-main.png" alt="Desktop Workstation Interface" style="width: 100%; display: block;">
+          </div>
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 6px;">Desktop Workstation Interface</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+            The primary workstation layout featuring the parametric controls sidebar on the left, the centered high-resolution canvas viewport, and the 13 cartographic theme pickers on the right.
+          </p>
+        </div>
+
+        <!-- Screenshot 2 -->
+        <div class="feature-card" style="padding: 16px;">
+          <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-subtle); margin-bottom: 16px;">
+            <img src="screenshots/fantasy-atlas-map.png" alt="High-Definition Fantasy Atlas" style="width: 100%; display: block;">
+          </div>
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 6px;">High-Definition Fantasy Atlas</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+            Delicate miniature mountains along interior continental ridgelines, small tree groves in forest biomes, open grasslands, heraldic citadels, and concentric wave ripple coastlines.
+          </p>
+        </div>
+
+        <!-- Screenshot 3 -->
+        <div class="feature-card" style="padding: 16px;">
+          <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-subtle); margin-bottom: 16px;">
+            <img src="screenshots/regional-inspector.png" alt="Regional Zoom Inspector" style="width: 100%; display: block;">
+          </div>
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 6px;">Regional Zoom Inspector</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+            Deep-dive regional inspection window displaying high-resolution regional sectors, an interactive bounding minimap overview, and a categorized landmark roster.
+          </p>
+        </div>
+
+        <!-- Screenshot 4 -->
+        <div class="feature-card" style="padding: 16px;">
+          <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-subtle); margin-bottom: 16px;">
+            <img src="screenshots/features-detail.png" alt="Parametric Feature Controls" style="width: 100%; display: block;">
+          </div>
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 6px;">Parametric Simulation Sliders</h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+            Granular controls for sea level, roughness, continentalness, Whittaker temperature and rainfall biases, mountain and river density, and live terrain sculpting brushes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Core Features Section -->
   <section id="features" class="section">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Engine Features</div>
-        <h2 class="section-title">Built for Serious Worldbuilders</h2>
+        <div class="section-tag">Key Capabilities</div>
+        <h2 class="section-title">Engineered for Worldbuilders</h2>
         <p class="section-subtitle">
           From antique Tolkien-inspired fantasy parchments to satellite bathymetry and 3D terrain heightmaps, Axis Map Generator delivers instant cartographic results.
         </p>
@@ -327,7 +422,7 @@
         <div class="section-tag">Installers & Packages</div>
         <h2 class="section-title">Download Axis Map Generator</h2>
         <p class="section-subtitle">
-          Release v2.0.0 is available for Windows 10 & 11 (64-bit). Choose between a standalone zero-install executable, a portable zip, or standard installer packages.
+          Release v2.0.0 is available for Windows 10 &amp; 11 (64-bit). Choose between a standalone zero-install executable, a portable zip, or standard installer packages.
         </p>
       </div>
 
@@ -486,32 +581,16 @@
           <div class="tech-desc">Rust 2021 + Tauri v2 native system runtime</div>
         </div>
         <div class="tech-card">
-          <div class="tech-title">Frontend</div>
+          <div class="tech-title">Frontend Engine</div>
           <div class="tech-desc">Pure Vanilla ES Modules + HTML5 2D Canvas</div>
         </div>
         <div class="tech-card">
-          <div class="tech-title">Animation</div>
+          <div class="tech-title">Animations</div>
           <div class="tech-desc">Bodymovin Lottie JSON Vector Micro-interactions</div>
         </div>
         <div class="tech-card">
           <div class="tech-title">Requirements</div>
           <div class="tech-desc">Windows 10 / 11 64-bit with Microsoft Edge WebView2</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Banner -->
-  <section class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="cta-banner">
-        <h2 class="cta-title">Start Generating Fantasy Worlds Today</h2>
-        <p class="cta-desc">
-          Try the online workstation directly in your web browser, or download the lightweight Windows desktop native binary. Free and open source under the MIT License.
-        </p>
-        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-          <a href="app/" target="_blank" class="btn btn-primary btn-lg">Launch Web Workstation</a>
-          <a href="#downloads" class="btn btn-secondary btn-lg">Download Windows App</a>
         </div>
       </div>
     </div>
@@ -527,14 +606,15 @@
             <span class="brand-title">Axis Map Generator</span>
           </a>
           <p>
-            An open-source procedural fantasy cartography workstation for worldbuilders, game developers, authors, and tabletop RPG creators.
+            A high-performance procedural fantasy cartography workstation for worldbuilders, game developers, authors, and tabletop RPG creators.
           </p>
         </div>
 
         <div>
           <div class="footer-heading">Workstation</div>
           <ul class="footer-links">
-            <li><a href="app/" target="_blank">Launch Web App</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#gallery">Screenshots</a></li>
             <li><a href="#features">Engine Features</a></li>
             <li><a href="#styles">Cartographic Styles</a></li>
             <li><a href="#downloads">Downloads</a></li>

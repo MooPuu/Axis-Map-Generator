@@ -4,9 +4,9 @@
 
 # Axis Map Generator
 
-**Next-Gen Native & Web Procedural Fantasy Cartography Workstation**
+**Next-Gen Native Procedural Fantasy Cartography Workstation**
 
-[![Platform: Windows • Web](https://img.shields.io/badge/Platform-Windows%20%7C%20Web-0078D6?logo=windows&logoColor=white)](https://github.com/MooPuu/Axis-Map-Generator/releases/tag/v2.0.0)
+[![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&logoColor=white)](https://github.com/MooPuu/Axis-Map-Generator/releases/tag/v2.0.0)
 [![Official Website](https://img.shields.io/badge/Website-moopuu.github.io%2FAxis--Map--Generator-f59e0b?logo=googlechrome&logoColor=white)](https://moopuu.github.io/Axis-Map-Generator/)
 [![Built with: Rust](https://img.shields.io/badge/Backend-Rust-DEA584?logo=rust&logoColor=white)](https://www.rust-lang.org)
 [![Framework: Tauri v2](https://img.shields.io/badge/Framework-Tauri%20v2-24C8D8?logo=tauri&logoColor=white)](https://tauri.app)
@@ -14,7 +14,7 @@
 [![Version: 2.0.0](https://img.shields.io/badge/Release-v2.0.0-success.svg)](https://github.com/MooPuu/Axis-Map-Generator/releases/tag/v2.0.0)
 
 <p align="center">
-  <a href="https://moopuu.github.io/Axis-Map-Generator/" target="_blank"><strong>🌐 Visit Official Website & Live Interactive Workstation</strong></a>
+  <a href="https://moopuu.github.io/Axis-Map-Generator/" target="_blank"><strong>🌐 Visit Official Website & Showcase</strong></a>
 </p>
 
 <p align="center">
