@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axis Map Generator — Next-Gen Procedural Cartography Workstation</title>
+  <meta name="description" content="A clean, minimal, modern procedural fantasy cartography workstation for worldbuilders, game developers, authors, and tabletop RPG creators. Native Rust + Tauri v2 & Web Edition.">
+  <meta name="keywords" content="Fantasy Map Generator, Cartography, Worldbuilding, Procedural Generation, Tauri, Rust, Canvas, RPG Maps, Tolkien Map, Heightmap Export, Axis Tools">
+  <meta property="og:title" content="Axis Map Generator — Procedural Cartography Workstation">
+  <meta property="og:description" content="Generate vast fantasy worlds, multi-realm political territories, isometric Tolkien mountain ridges, and export 16-bit heightmaps for Blender & Unreal Engine 5.">
+  <meta property="og:image" content="assets/Axis%20Map%20Generator%202.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://moopuu.github.io/Axis-Map-Generator/">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Ambient Glow Effects -->
+  <div class="glow-sphere glow-1"></div>
+  <div class="glow-sphere glow-2"></div>
+  <div class="glow-sphere glow-3"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-link">
+        <img src="assets/logo.png" alt="Axis Logo" class="brand-icon">
+        <span class="brand-title">Axis Map Generator</span>
+        <span class="brand-badge">v2.0.0</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#demo" class="nav-link">Interactive Map</a>
+        <a href="#styles" class="nav-link">13 Styles</a>
+        <a href="#downloads" class="nav-link">Downloads</a>
+        <a href="#specs" class="nav-link">Specs</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/MooPuu/Axis-Map-Generator" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="app/" target="_blank" class="btn btn-primary btn-sm">
+          <span>Launch Web App</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge-wrap">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-text">v2.0.0 Native & Web Workstation Edition</span>
+      </div>
+
+      <h1 class="hero-title">
+        Procedural Fantasy Cartography <br>
+        <span class="gradient-text">For Worldbuilders & Creators</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A clean, minimal, modern workstation designed for worldbuilders, game developers, authors, and tabletop RPG creators. Generate multi-realm fantasy worlds with isometric mountain cordilleras, clustered tree groves, meandering hydrology, and export directly to 16-bit 3D heightmaps.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#downloads" class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download for Windows</span>
+        </a>
+
+        <a href="app/" target="_blank" class="btn btn-secondary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          <span>Launch Online Workstation</span>
+        </a>
+
+        <a href="https://github.com/MooPuu/Axis-Map-Generator" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg">
+          <span>Source Code</span>
+        </a>
+      </div>
+
+      <!-- Hero Showcase Window with Embedded App -->
+      <div id="demo" class="hero-preview-container">
+        <div class="preview-window-bar">
+          <div class="window-dots">
+            <span class="window-dot dot-red"></span>
+            <span class="window-dot dot-yellow"></span>
+            <span class="window-dot dot-green"></span>
+          </div>
+          <div class="window-title">Axis Map Generator — Live Workstation Preview</div>
+          <div style="font-size: 0.8rem; color: #10b981; font-weight: 600;">● Online Ready</div>
+        </div>
+        <div class="hero-preview-screen">
+          <iframe src="app/" title="Axis Map Generator Live Workstation"></iframe>
+          <div class="preview-overlay-btn">
+            <a href="app/" target="_blank" class="btn btn-primary btn-sm" title="Open full screen in a new tab">
+              <span>Open Fullscreen</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <polyline points="9 21 3 21 3 15"></polyline>
+                <line x1="21" y1="3" x2="14" y2="10"></line>
+                <line x1="3" y1="21" x2="10" y2="14"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Ribbon -->
+      <div class="stats-ribbon">
+        <div class="stat-item">
+          <div class="stat-number">13</div>
+          <div class="stat-label">Artistic Cartographic Styles</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">7</div>
+          <div class="stat-label">Continental Archetypes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">16-bit</div>
+          <div class="stat-label">Heightmaps for Blender & UE5</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">&lt; 9 MB</div>
+          <div class="stat-label">Standalone Single-File Binary</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Engine Features</div>
+        <h2 class="section-title">Built for Serious Worldbuilders</h2>
+        <p class="section-subtitle">
+          From antique Tolkien-inspired fantasy parchments to satellite bathymetry and 3D terrain heightmaps, Axis Map Generator delivers instant cartographic results.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">🌍</div>
+          <h3 class="feature-title">Multi-Octave Fractal Worlds</h3>
+          <p class="feature-desc">
+            Procedural continents, archipelagos, pangaeas, shattered isles, and caldera ring atolls generated with customizable sea level, roughness, and mountain ridging.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">🏔️</div>
+          <h3 class="feature-title">Miniature Tolkien Mountain Ridges</h3>
+          <p class="feature-desc">
+            Isometric mountain peaks with sunlit slopes, hand-engraved shadow hatching, snowcaps, and foothill hummocks clustered naturally along continental ridgelines.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">💧</div>
+          <h3 class="feature-title">Hydraulic Flow Simulation</h3>
+          <p class="feature-desc">
+            Real moisture and hydraulic flow accumulation carving dendritic river networks, tributaries, inland lakes, and estuaries out to concentric ocean wave ripples.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">👑</div>
+          <h3 class="feature-title">Multi-Realm Political Dynasties</h3>
+          <p class="feature-desc">
+            Procedural heraldic capitals with citadel keeps, pennant flags, castles, and town markers. Click any label on the canvas to rename or drag to reposition.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">🖌️</div>
+          <h3 class="feature-title">Live Manual Terrain Sculpting</h3>
+          <p class="feature-desc">
+            Interactive Raise, Lower, and Smooth brushes with configurable brush radius and intensity. Sculpt custom mountain ranges or carve bays in real time.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">📦</div>
+          <h3 class="feature-title">3D Heightmap & Vector SVG Export</h3>
+          <p class="feature-desc">
+            Export crisp 4K/8K PNGs, scalable vector SVGs, and 16-bit Grayscale Heightmap PNGs ready for immediate displacement in Blender, Unreal Engine 5, and Unity.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 Cartographic Styles Section -->
+  <section id="styles" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Visual Themes</div>
+        <h2 class="section-title">13 Cartographic Styles</h2>
+        <p class="section-subtitle">
+          Instantly transform any generated continent with 13 hand-tuned visual palettes suited for fantasy novels, sci-fi campaigns, tabletop RPGs, or retro games.
+        </p>
+      </div>
+
+      <div class="styles-grid">
+        <div class="style-card-item">
+          <div class="style-swatch">
+            <div class="swatch-col" style="background: #f2ecd9;"></div>
+            <div class="swatch-col" style="background: #8fa876;"></div>
+            <div class="swatch-col" style="background: #dacfad;"></div>
+            <div class="swatch-col" style="background: #5c8096;"></div>
+          </div>
+          <div class="style-title">Classic Fantasy</div>
+          <div class="style-sub">Tolkien sepia parchment with hand-engraved hatching</div>
+        </div>
+
+        <div class="style-card-item">
+          <div class="style-swatch">
+            <div class="swatch-col" style="background: #fbf5e8;"></div>
+            <div class="swatch-col" style="background: #a3c48a;"></div>
+            <div class="swatch-col" style="background: #e2c082;"></div>
+            <div class="swatch-col" style="background: #7ca8c2;"></div>
+          </div>
+          <div class="style-title">Watercolor Wash</div>
+          <div class="style-sub">Soft blended pigments and painterly coastal hues</div>
+        </div>
+
+        <div class="style-card-item">
+          <div class="style-swatch">
+            <div class="swatch-col" style="background: #a7c957;"></div>
+            <div class="swatch-col" style="background: #6a994e;"></div>
+            <div class="swatch-col" style="background: #bc6c25;"></div>
+            <div class="swatch-col" style="background: #163252;"></div>
+          </div>
+          <div class="style-title">Atlas Relief</div>
+          <div class="style-sub">Topographic hypsometric elevation tints & relief shading</div>
+        </div>
+
+        <div class="style-card-item">
+          <div class="style-swatch">
+            <div class="swatch-col" style="background: #0f172a;"></div>
+            <div class="swatch-col" style="background: #1e293b;"></div>
+            <div class="swatch-col" style="background: #38bdf8;"></div>
+            <div class="swatch-col" style="background: #0284c7;"></div>
+          </div>
+          <div class="style-title">Dark Cartography</div>
+          <div class="style-sub">Midnight slate with glowing cyan coastlines and rivers</div>
+        </div>
+
+        <div class="style-card-item">
+          <div class="style-swatch">
+            <div class="swatch-col" style="background: #ffffff;"></div>
+            <div class="swatch-col" style="background: #e5e7eb;"></div>
+            <div class="swatch-col" style="background: #111827;"></div>
+            <div class="swatch-col" style="background: #000000;"></div>
+          </div>
+          <div class="style-title">Minimal Ink</div>
+          <div class="style-sub">Crisp black-and-white architectural ink linework</div>
+        </div>
+
+        <div class="style-card-item">
+          <div class="style-swatch">
+            <div class="swatch-col" style="background: #050b14;"></div>
+            <div class="swatch-col" style="background: #0d1b2a;"></div>
+            <div class="swatch-col" style="background: #ff007f;"></div>
+            <div class="swatch-col" style="background: #00f0ff;"></div>
+          </div>
+          <div class="style-title">Cyberpunk Neon</div>
+          <div class="style-sub">High-tech neon grid lines with electric pink borders</div>
+        </div>
+
+        <div class="style-card-item">
+          <div class="style-swatch">
+            <div class="swatch-col" style="background: #e2f1d8;"></div>
+            <div class="swatch-col" style="background: #73ab62;"></div>
+            <div class="swatch-col" style="background: #3b7538;"></div>
+            <div class="swatch-col" style="background: #4682b4;"></div>
+          </div>
+          <div class="style-title">Verdant Realm</div>
+          <div class="style-sub">Lush green kingdoms, emerald groves & azure bays</div>
+        </div>
+
+        <div class="style-card-item">
+          <div class="style-swatch">
+            <div class="swatch-col" style="background: #102a43;"></div>
+            <div class="swatch-col" style="background: #243b53;"></div>
+            <div class="swatch-col" style="background: #627d98;"></div>
+            <div class="swatch-col" style="background: #00ffff;"></div>
+          </div>
+          <div class="style-title">Tactical Blueprint</div>
+          <div class="style-sub">Architectural cyanotype grid with precise white vectors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads & Releases Section -->
+  <section id="downloads" class="section download-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Installers & Packages</div>
+        <h2 class="section-title">Download Axis Map Generator</h2>
+        <p class="section-subtitle">
+          Release v2.0.0 is available for Windows 10 & 11 (64-bit). Choose between a standalone zero-install executable, a portable zip, or standard installer packages.
+        </p>
+      </div>
+
+      <div class="download-cards-grid">
+        <!-- Card 1: Standalone Portable EXE -->
+        <div class="download-card featured">
+          <span class="featured-pill">Recommended</span>
+          <div class="card-top">
+            <span class="download-badge">Zero Installation</span>
+            <h3 class="download-name">Standalone Portable EXE</h3>
+            <p class="download-desc">
+              Self-contained single executable. Double-click and run instantly without installation or admin privileges.
+            </p>
+            <div class="download-meta">~8.8 MB • Windows 10/11 x64</div>
+          </div>
+          <a href="https://github.com/MooPuu/Axis-Map-Generator/releases/download/v2.0.0/AxisMapGenerator-v2.0.0-windows-x64.exe" class="btn btn-primary" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download .EXE</span>
+          </a>
+        </div>
+
+        <!-- Card 2: Portable ZIP Archive -->
+        <div class="download-card">
+          <div class="card-top">
+            <span class="download-badge">Compressed Archive</span>
+            <h3 class="download-name">Portable ZIP Package</h3>
+            <p class="download-desc">
+              Bundled portable archive containing the executable and documentation for USB drives or offline distribution.
+            </p>
+            <div class="download-meta">~2.8 MB • .ZIP Archive</div>
+          </div>
+          <a href="https://github.com/MooPuu/Axis-Map-Generator/releases/download/v2.0.0/AxisMapGenerator-v2.0.0-windows-portable.zip" class="btn btn-secondary" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download .ZIP</span>
+          </a>
+        </div>
+
+        <!-- Card 3: NSIS Setup Installer -->
+        <div class="download-card">
+          <div class="card-top">
+            <span class="download-badge">Standard Setup</span>
+            <h3 class="download-name">Setup Installer (NSIS)</h3>
+            <p class="download-desc">
+              Guided Windows installation wizard with Start Menu shortcuts, desktop icons, and clean uninstaller support.
+            </p>
+            <div class="download-meta">~2.1 MB • NSIS Installer</div>
+          </div>
+          <a href="https://github.com/MooPuu/Axis-Map-Generator/releases/download/v2.0.0/AxisMapGenerator-v2.0.0-setup.exe" class="btn btn-secondary" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download Setup</span>
+          </a>
+        </div>
+
+        <!-- Card 4: Enterprise MSI Installer -->
+        <div class="download-card">
+          <div class="card-top">
+            <span class="download-badge">Enterprise MSI</span>
+            <h3 class="download-name">Enterprise Package (MSI)</h3>
+            <p class="download-desc">
+              WiX-built Windows Installer package for enterprise rollouts, unattended silent deployment, and Active Directory Group Policy.
+            </p>
+            <div class="download-meta">~3.1 MB • Windows MSI</div>
+          </div>
+          <a href="https://github.com/MooPuu/Axis-Map-Generator/releases/download/v2.0.0/AxisMapGenerator-v2.0.0-x64.msi" class="btn btn-secondary" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download MSI</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- SHA256 Checksums Box -->
+      <div class="checksum-box">
+        <div class="checksum-header">
+          <div class="checksum-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>SHA256 Integrity Verification Checksums</span>
+          </div>
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">v2.0.0 Official Build</span>
+        </div>
+
+        <table class="checksum-table">
+          <thead>
+            <tr>
+              <th>File Name</th>
+              <th>SHA256 Checksum Hash</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>AxisMapGenerator-v2.0.0-windows-x64.exe</strong></td>
+              <td class="checksum-hash">aa5318ede3ab31f4d4f09b25cd7de62b4f7f238ec87fae878fddd24f35af381e</td>
+              <td style="text-align: right;">
+                <button class="btn btn-outline btn-sm copy-hash-btn" data-hash="aa5318ede3ab31f4d4f09b25cd7de62b4f7f238ec87fae878fddd24f35af381e">Copy</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>AxisMapGenerator-v2.0.0-windows-portable.zip</strong></td>
+              <td class="checksum-hash">d6406b56a389e35bbb272391b4bc2888604f6b824ce0c54231ec05c4c63a527a</td>
+              <td style="text-align: right;">
+                <button class="btn btn-outline btn-sm copy-hash-btn" data-hash="d6406b56a389e35bbb272391b4bc2888604f6b824ce0c54231ec05c4c63a527a">Copy</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>AxisMapGenerator-v2.0.0-setup.exe</strong></td>
+              <td class="checksum-hash">bf7ba77a11a708d06660aab3b852aefb01e61caccee4cf73e3ab76cd3a252fe6</td>
+              <td style="text-align: right;">
+                <button class="btn btn-outline btn-sm copy-hash-btn" data-hash="bf7ba77a11a708d06660aab3b852aefb01e61caccee4cf73e3ab76cd3a252fe6">Copy</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>AxisMapGenerator-v2.0.0-x64.msi</strong></td>
+              <td class="checksum-hash">6d611be62ee48b51efde6c8f4738d2efd0f97b5f2c343c3bfb3972155e3a67f0</td>
+              <td style="text-align: right;">
+                <button class="btn btn-outline btn-sm copy-hash-btn" data-hash="6d611be62ee48b51efde6c8f4738d2efd0f97b5f2c343c3bfb3972155e3a67f0">Copy</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specs & Requirements -->
+  <section id="specs" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Specifications</div>
+        <h2 class="section-title">Architecture & System Specs</h2>
+        <p class="section-subtitle">
+          Designed with a lightweight Rust + Tauri v2 architecture that boots instantly and consumes a fraction of traditional Electron or web apps.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-title">Backend</div>
+          <div class="tech-desc">Rust 2021 + Tauri v2 native system runtime</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-title">Frontend</div>
+          <div class="tech-desc">Pure Vanilla ES Modules + HTML5 2D Canvas</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-title">Animation</div>
+          <div class="tech-desc">Bodymovin Lottie JSON Vector Micro-interactions</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-title">Requirements</div>
+          <div class="tech-desc">Windows 10 / 11 64-bit with Microsoft Edge WebView2</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-banner">
+        <h2 class="cta-title">Start Generating Fantasy Worlds Today</h2>
+        <p class="cta-desc">
+          Try the online workstation directly in your web browser, or download the lightweight Windows desktop native binary. Free and open source under the MIT License.
+        </p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="app/" target="_blank" class="btn btn-primary btn-lg">Launch Web Workstation</a>
+          <a href="#downloads" class="btn btn-secondary btn-lg">Download Windows App</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand-link">
+            <img src="assets/logo.png" alt="Axis Logo" class="brand-icon">
+            <span class="brand-title">Axis Map Generator</span>
+          </a>
+          <p>
+            An open-source procedural fantasy cartography workstation for worldbuilders, game developers, authors, and tabletop RPG creators.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-heading">Workstation</div>
+          <ul class="footer-links">
+            <li><a href="app/" target="_blank">Launch Web App</a></li>
+            <li><a href="#features">Engine Features</a></li>
+            <li><a href="#styles">Cartographic Styles</a></li>
+            <li><a href="#downloads">Downloads</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">Axis Tools</div>
+          <ul class="footer-links">
+            <li><a href="https://github.com/MooPuu/Axis-Texture-Lab" target="_blank" rel="noopener noreferrer">Axis Texture Lab</a></li>
+            <li><a href="https://github.com/MooPuu/Axis-Sfx-Lab" target="_blank" rel="noopener noreferrer">Axis SFX Lab</a></li>
+            <li><a href="https://github.com/MooPuu/Asset-Organizer" target="_blank" rel="noopener noreferrer">Asset Organizer</a></li>
+            <li><a href="https://github.com/MooPuu" target="_blank" rel="noopener noreferrer">GitHub Profile</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">Legal & Info</div>
+          <ul class="footer-links">
+            <li><a href="https://github.com/MooPuu/Axis-Map-Generator/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a></li>
+            <li><a href="https://github.com/MooPuu/Axis-Map-Generator" target="_blank" rel="noopener noreferrer">Source Code</a></li>
+            <li><a href="https://github.com/MooPuu/Axis-Map-Generator/issues" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>Copyright &copy; 2026 Mahdi Kareem (Axis Tools). All rights reserved.</div>
+        <div>Released under the open-source MIT License.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

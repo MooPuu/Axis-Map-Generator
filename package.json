@@ -1,0 +1,15 @@
+{
+  "name": "axis-map-generator",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Axis Map Generator - Clean Minimal Modern Cartography Workstation - Made By Mahdi Kareem © 2026",
+  "author": "Mahdi Kareem",
+  "private": true,
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.4"
+  }
+}

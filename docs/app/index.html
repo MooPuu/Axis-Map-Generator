@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axis Map Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand-section">
+      <div class="brand-logo-mark">
+        <img src="assets/logo-mark.png" alt="Axis Logo" class="brand-logo-img">
+      </div>
+      <span class="brand-title">Axis Map Generator</span>
+    </div>
+
+    <!-- Top Center Logo -->
+    <div class="header-center-branding">
+      <img src="assets/brand-header.png" alt="Axis Tools" class="header-center-logo">
+    </div>
+
+    <div class="header-center-tools">
+      <!-- Resolution & Aspect Ratio Presets -->
+      <select id="resolutionSelect" class="select-control" title="Canvas Resolution & Aspect Ratio Preset">
+        <optgroup label="Standard Screen">
+          <option value="1440x900">Workstation (1440 × 900)</option>
+          <option value="1920x1080" selected>FHD 1080p (1920 × 1080 - 16:9)</option>
+          <option value="2560x1440">QHD 2K (2560 × 1440 - 16:9)</option>
+          <option value="3840x2160">UHD 4K (3840 × 2160 - 16:9)</option>
+          <option value="7680x4320">Ultra 8K (7680 × 4320 - 16:9)</option>
+        </optgroup>
+        <optgroup label="Aspect Ratios">
+          <option value="2048x1536">Atlas 4:3 (2048 × 1536)</option>
+          <option value="2048x2048">Square 1:1 (2048 × 2048)</option>
+          <option value="2560x1080">Cinematic 21:9 (2560 × 1080)</option>
+        </optgroup>
+        <optgroup label="Print Standards (300 DPI)">
+          <option value="3508x2480">Print A4 300 DPI (3508 × 2480)</option>
+          <option value="3300x2550">Print Letter 300 DPI (3300 × 2550)</option>
+        </optgroup>
+      </select>
+
+      <!-- About Modal Button -->
+      <button id="aboutBtn" class="icon-button" title="About Axis Map Generator">
+        <span data-icon="info"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Workstation Container -->
+  <main class="workstation-container">
+
+    <!-- Left Controls Panel -->
+    <aside class="side-panel left">
+      <div class="side-panel-scroll-area">
+        <!-- World Settings (from reference image) -->
+        <div class="panel-section">
+          <div class="section-title">
+            <span data-icon="sparkles"></span>
+            <span>World Settings</span>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="worldNameInput">World Name</label>
+            <input type="text" id="worldNameInput" class="text-input" value="Dwalbarrul" placeholder="e.g. Dwalbarrul, Fenwyn...">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="titlePrefixInput">Map Title Prefix</label>
+            <input type="text" id="titlePrefixInput" class="text-input" value="The Land of" placeholder="e.g. The Land of, The Realms of...">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="archetypeSelect">Landmass Archetype</label>
+            <select id="archetypeSelect" class="select-control">
+              <option value="continents">Continents & Oceans (World)</option>
+              <option value="continent">Single Continent</option>
+              <option value="island">Fantasy Island</option>
+              <option value="archipelago">Archipelago & Isles</option>
+              <option value="pangaea">Pangaea Supercontinent</option>
+              <option value="shattered">Shattered Realms</option>
+              <option value="ring">Caldera Ring Atoll</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="seedInput">World Seed</label>
+            <div class="input-with-button">
+              <input type="number" id="seedInput" class="text-input" placeholder="Random seed...">
+              <button id="randomSeedBtn" class="icon-button" title="Randomize Seed">
+                <span data-icon="dice"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Density Sliders (from reference image) -->
+        <div class="panel-section">
+          <div class="section-title">
+            <span data-icon="layers"></span>
+            <span>Feature Densities</span>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="riverSlider">
+              <span>Rivers Density</span>
+              <span id="riverVal" class="control-value">100%</span>
+            </label>
+            <input type="range" id="riverSlider" class="range-slider" min="0.1" max="1.5" step="0.05" value="1.0">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="mountainSlider">
+              <span>Mountains Density</span>
+              <span id="mountainVal" class="control-value">100%</span>
+            </label>
+            <input type="range" id="mountainSlider" class="range-slider" min="0.1" max="1.5" step="0.05" value="1.0">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="forestSlider">
+              <span>Forests Density</span>
+              <span id="forestVal" class="control-value">100%</span>
+            </label>
+            <input type="range" id="forestSlider" class="range-slider" min="0.1" max="1.5" step="0.05" value="1.0">
+          </div>
+        </div>
+
+        <!-- Climate & Geography Sliders -->
+        <div class="panel-section">
+          <div class="section-title">
+            <span data-icon="water"></span>
+            <span>Tectonic & Climate</span>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="seaLevelSlider">
+              <span>Sea Level</span>
+              <span id="seaLevelVal" class="control-value">0.44</span>
+            </label>
+            <input type="range" id="seaLevelSlider" class="range-slider" min="0.2" max="0.75" step="0.01" value="0.44">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="roughnessSlider">
+              <span>Coastline Roughness</span>
+              <span id="roughnessVal" class="control-value">0.52</span>
+            </label>
+            <input type="range" id="roughnessSlider" class="range-slider" min="0.2" max="0.8" step="0.01" value="0.52">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="continentalnessSlider">
+              <span>Continental Bias</span>
+              <span id="continentalnessVal" class="control-value">0.62</span>
+            </label>
+            <input type="range" id="continentalnessSlider" class="range-slider" min="0.2" max="0.9" step="0.01" value="0.62">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="tempSlider">
+              <span>Global Temperature</span>
+              <span id="tempVal" class="control-value">0.50</span>
+            </label>
+            <input type="range" id="tempSlider" class="range-slider" min="0.0" max="1.0" step="0.01" value="0.5">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="rainSlider">
+              <span>Rainfall / Moisture</span>
+              <span id="rainVal" class="control-value">0.50</span>
+            </label>
+            <input type="range" id="rainSlider" class="range-slider" min="0.0" max="1.0" step="0.01" value="0.5">
+          </div>
+        </div>
+
+        <!-- Terrain Sculpt Brush Palette -->
+        <div class="panel-section">
+          <div class="section-title">
+            <span data-icon="brush"></span>
+            <span>Manual Terrain Sculpt</span>
+          </div>
+
+          <div class="sculpt-grid">
+            <button class="sculpt-btn" data-mode="raise" title="Raise Elevation (Create mountains/islands)">
+              <span data-icon="raise"></span>
+              <span>Raise</span>
+            </button>
+            <button class="sculpt-btn" data-mode="lower" title="Lower Elevation (Carve bays/oceans)">
+              <span data-icon="lower"></span>
+              <span>Lower</span>
+            </button>
+            <button class="sculpt-btn" data-mode="smooth" title="Smooth Terrain (Erosion)">
+              <span data-icon="smooth"></span>
+              <span>Smooth</span>
+            </button>
+          </div>
+
+          <div class="control-group" style="margin-top: 6px;">
+            <label class="control-label" for="brushRadiusSlider">
+              <span>Brush Radius</span>
+              <span id="brushRadiusVal" class="control-value">35px</span>
+            </label>
+            <input type="range" id="brushRadiusSlider" class="range-slider" min="10" max="100" step="1" value="35">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="brushStrengthSlider">
+              <span>Brush Strength</span>
+              <span id="brushStrengthVal" class="control-value">0.50</span>
+            </label>
+            <input type="range" id="brushStrengthSlider" class="range-slider" min="0.1" max="1.0" step="0.05" value="0.5">
+          </div>
+        </div>
+
+        <!-- Map Typography & Labels -->
+        <div class="panel-section">
+          <div class="section-title">
+            <span data-icon="sparkles"></span>
+            <span>Typography & Labels</span>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="fontSizeSlider">
+              <span>Map Font Size</span>
+              <span id="fontSizeVal" class="control-value">13px</span>
+            </label>
+            <input type="range" id="fontSizeSlider" class="range-slider" min="8" max="32" step="1" value="13">
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="labelFilterSelect">Label Display</label>
+            <select id="labelFilterSelect" class="select-control">
+              <option value="all">All Settlements & Oceans</option>
+              <option value="capitals">Major Capitals Only</option>
+              <option value="settlements">Settlements Only (No Oceans)</option>
+              <option value="oceans">Oceans & Seas Only</option>
+            </select>
+          </div>
+
+          <button id="rerollNamesBtn" class="btn-action" style="margin-top: 4px;" title="Re-roll place and ocean names without changing terrain">
+            <span data-icon="dice"></span>
+            <span>Re-roll Place Names</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Left Big Square Generate Button (Fills sidebar width with large animated orb) -->
+      <div class="generate-btn-container">
+        <button id="generateBtn" class="btn-generate-square" title="Generate World Map (Ctrl+G)">
+          <div id="aiLogoContainer" class="square-lottie-center"></div>
+          <span class="btn-generate-label">Generate World</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Center Canvas Viewport -->
+    <div id="canvasViewport" class="canvas-viewport">
+      <canvas id="mapCanvas"></canvas>
+
+      <!-- Top-Left HUD Telemetry -->
+      <div class="viewport-hud top-left">
+        <div id="coordBadge" class="hud-badge">X:0 Y:0 | Elev:0% | Biome:--</div>
+        <div id="resBadge" class="hud-badge">1920 × 1080</div>
+      </div>
+
+      <!-- Floating Vertical Viewport Tools -->
+      <div class="viewport-floating-tools">
+        <button id="zoomInBtn" class="float-btn" title="Zoom In (+)">+</button>
+        <button id="zoomOutBtn" class="float-btn" title="Zoom Out (-)">−</button>
+        <button id="resetViewBtn" class="float-btn" title="Fit to Viewport (⟲)">⟲</button>
+        <button id="undoBtn" class="float-btn" title="Undo (Ctrl+Z)">↩</button>
+        <button id="inspectRegionBtn" class="float-btn" title="Inspect Region (Z)">⌕</button>
+      </div>
+
+      <!-- Bottom Canvas Action Strip (from reference image) -->
+      <div class="canvas-action-strip">
+        <div class="action-strip-hint">
+          <span data-icon="info"></span>
+          <span id="interactionNotice">Scroll to zoom • Drag to pan • Click name to edit • Drag name to move</span>
+        </div>
+        <div class="action-strip-btns">
+          <button id="stripPngBtn" class="strip-btn" title="Download High-Res PNG">
+            <span data-icon="download"></span>
+            <span>PNG</span>
+          </button>
+          <button id="stripSvgBtn" class="strip-btn" title="Download Scalable Vector Graphics">
+            <span data-icon="map"></span>
+            <span>SVG</span>
+          </button>
+          
+          <!-- + Add... Dropdown Tool -->
+          <div class="add-dropdown-wrapper">
+            <button id="addDropdownBtn" class="strip-btn accent" title="Place Custom POIs, Mountains, Trees, or Towns anywhere">
+              <span>+ Add...</span>
+              <span class="dropdown-caret">▾</span>
+            </button>
+            <div id="addDropdownMenu" class="add-dropdown-menu">
+              <div class="add-item" data-add="capital"><span class="badge-dot" style="background:#f59e0b;"></span> Capital City</div>
+              <div class="add-item" data-add="town"><span class="badge-dot" style="background:#ffffff;"></span> Town Marker</div>
+              <div class="add-item" data-add="castle"><span class="badge-dot" style="background:#8b5cf6;"></span> Castle / Fortress</div>
+              <div class="add-item" data-add="poi"><span class="badge-dot" style="background:#ef4444;"></span> Point of Interest (POI)</div>
+              <div class="add-item" data-add="label"><span class="badge-dot" style="background:#38bdf8;"></span> Custom Place Name</div>
+              <div class="add-item" data-add="mountain"><span class="badge-dot" style="background:#713f12;"></span> Mountain Peak</div>
+              <div class="add-item" data-add="tree"><span class="badge-dot" style="background:#15803d;"></span> Forest Tree Grove</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Central Lottie Loading Animation -->
+      <div id="loadingOverlay" class="loading-overlay">
+        <div id="loadingDotsContainer" class="loading-dots-box"></div>
+        <div class="loading-label">Synthesizing Cartographic World...</div>
+      </div>
+    </div>
+
+    <!-- Right Controls Panel -->
+    <aside class="side-panel right">
+
+      <!-- 13 Style Presets -->
+      <div class="panel-section">
+        <div class="section-title">
+          <span data-icon="palette"></span>
+          <span>Cartographic Styles (13)</span>
+        </div>
+
+        <div class="style-grid">
+          <!-- 1. Parchment (Classic Fantasy) -->
+          <div class="style-card active" data-style="parchment" title="Classic Fantasy Parchment (Tolkien / Sepia)">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Classic Fantasy</div>
+          </div>
+          <!-- 2. Watercolor -->
+          <div class="style-card" data-style="watercolor" title="Watercolor: Soft blended washes & painterly hues">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Watercolor</div>
+          </div>
+          <!-- 3. Verdant -->
+          <div class="style-card" data-style="verdant" title="Verdant: Lush green kingdoms, sapphire bays & emerald groves">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Verdant Realm</div>
+          </div>
+          <!-- 4. Atlas -->
+          <div class="style-card" data-style="atlas" title="Modern Topographic Relief & Hypsometric Tints">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Atlas Relief</div>
+          </div>
+          <!-- 5. Minimal Ink -->
+          <div class="style-card" data-style="minimal_ink" title="Crisp Monochrome Architectural Line Art">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Minimal Ink</div>
+          </div>
+          <!-- 6. Dark Cartography -->
+          <div class="style-card" data-style="dark_cartography" title="Midnight Indigo & Glowing Contours">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Dark Mode</div>
+          </div>
+          <!-- 7. Cyberpunk Neon -->
+          <div class="style-card" data-style="cyberpunk" title="Cyberpunk Neon: Nocturnal grids, magenta & cyan laser paths">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Cyber Neon</div>
+          </div>
+          <!-- 8. Sci-Fi Hologram -->
+          <div class="style-card" data-style="hologram" title="Sci-Fi Hologram: Tactical radar sweeps & digital telemetry">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Hologram</div>
+          </div>
+          <!-- 9. Antique Pirate -->
+          <div class="style-card" data-style="pirate" title="Antique Pirate: Weathered canvas, galleons & sea monsters">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Pirate Sea</div>
+          </div>
+          <!-- 10. Cozy Pixel Art -->
+          <div class="style-card" data-style="pixel" title="Cozy Pixel Art: 16-bit retro RPG, blocky terrain & pixel sprites">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Pixel RPG</div>
+          </div>
+          <!-- 11. Steampunk Brass & Gear -->
+          <div class="style-card" data-style="steampunk" title="Steampunk Brass: Polished copper & interlocking gears">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Steampunk</div>
+          </div>
+          <!-- 12. Blueprint & Draftsman -->
+          <div class="style-card" data-style="blueprint" title="Blueprint: Prussian blue, technical drafting grid & CAD contours">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Blueprint Draft</div>
+          </div>
+          <!-- 13. Photorealistic Satellite -->
+          <div class="style-card" data-style="satellite" title="Photorealistic Satellite & Natural Biomes">
+            <div class="style-preview-swatch"></div>
+            <div class="style-name">Satellite</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Display Options (from reference image) -->
+      <div class="panel-section">
+        <div class="section-title">
+          <span data-icon="layers"></span>
+          <span>Map Display Options</span>
+        </div>
+
+        <div class="grid-controls-row">
+          <div class="control-group" style="flex: 1;">
+            <label class="control-label" for="gridTypeSelect">Grid Type</label>
+            <select id="gridTypeSelect" class="select-control">
+              <option value="none">None</option>
+              <option value="hex" selected>Hex Grid</option>
+              <option value="square">Square Grid</option>
+            </select>
+          </div>
+          <div class="control-group" style="flex: 1;">
+            <label class="control-label" for="gridOpacitySelect">Opacity</label>
+            <select id="gridOpacitySelect" class="select-control">
+              <option value="0.10">Black 10%</option>
+              <option value="0.20" selected>Black 20%</option>
+              <option value="0.35">Black 35%</option>
+              <option value="white">White 20%</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="diamond-toggle-grid">
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_elevation" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Land Elevations</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_biomes" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Biomes / Terrain</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_settlements" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Settlements</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_realms" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Realm Labels</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_relief" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Mountains & Hills</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_forests" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Forests & Trees</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_rivers" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Rivers & Lakes</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_water" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Ocean Depths</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_roads" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Trade Roads</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_pois" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Points of Interest</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_titleBanner" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Title Banner</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_compassRose" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Compass Rose</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_scaleBar" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Scale Bar</span>
+          </label>
+          <label class="diamond-toggle">
+            <input type="checkbox" id="layer_borderFrame" checked>
+            <span class="diamond-box"></span>
+            <span class="diamond-text">Border Frame</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Cartographic Legend (from reference image) -->
+      <div class="panel-section">
+        <div class="section-title">
+          <span data-icon="map"></span>
+          <span>Cartographic Legend</span>
+        </div>
+
+        <div class="legend-grid">
+          <div class="legend-item">
+            <div class="legend-swatch desert-swatch"></div>
+            <span>Desert</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch forest-swatch"></div>
+            <span>Forest</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch grassland-swatch"></div>
+            <span>Grassland</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch hills-swatch"></div>
+            <span>Hills</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch mountain-swatch"></div>
+            <span>Mountains</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch plains-swatch"></div>
+            <span>Plains</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch river-swatch"></div>
+            <span>River</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch savanna-swatch"></div>
+            <span>Savanna</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch tundra-swatch"></div>
+            <span>Tundra</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch wetlands-swatch"></div>
+            <span>Wetlands</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Export Maps (from reference image) -->
+      <div class="panel-section">
+        <div class="section-title">
+          <span data-icon="download"></span>
+          <span>Export Maps</span>
+        </div>
+
+        <p class="export-hint-text">Download your world map at the size and detail you need.</p>
+
+        <div class="export-row-card">
+          <div class="export-row-title">World Overview</div>
+          <div class="export-row-desc">Summary map of land, biomes and cities.</div>
+          <div class="export-row-controls">
+            <select id="exportFormatSelect" class="select-control" style="width: 80px;">
+              <option value="png">PNG</option>
+              <option value="jpg">JPG</option>
+              <option value="svg">SVG</option>
+            </select>
+            <select id="exportResSelect" class="select-control" style="flex: 1;">
+              <option value="1920x1080">1920 × 1080 (FHD)</option>
+              <option value="3840x2160">3840 × 2160 (4K)</option>
+              <option value="4800x3200" selected>4800 × 3200 (Hi-Res)</option>
+              <option value="7680x4320">7680 × 4320 (8K)</option>
+            </select>
+            <button id="exportOverviewBtn" class="btn-action primary">Export</button>
+          </div>
+        </div>
+
+        <div class="export-row-card">
+          <div class="export-row-title">Full Detail 3D Heightmap</div>
+          <div class="export-row-desc">16-bit Grayscale heightmap for Blender & Unreal Engine 5.</div>
+          <button id="exportHeightmapBtn" class="btn-action" style="width: 100%;">
+            <span data-icon="mountain"></span>
+            <span>Export 16-bit Heightmap</span>
+          </button>
+        </div>
+
+        <div class="export-persistence-btns">
+          <button id="saveProjectBtn" class="btn-action">
+            <span data-icon="save"></span>
+            <span>Save .axis</span>
+          </button>
+          <button id="loadProjectBtn" class="btn-action">
+            <span data-icon="folder"></span>
+            <span>Load .axis</span>
+          </button>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- App Footer Status Bar -->
+  <footer class="app-footer">
+    <div class="footer-stats">
+      <div class="footer-stat-item">World: <span id="statWorld">Dwalbarrul</span></div>
+      <div class="footer-stat-item">Seed: <span id="statSeed">--</span></div>
+      <div class="footer-stat-item">Realms: <span id="statRealms">0</span></div>
+      <div class="footer-stat-item">Rivers: <span id="statRivers">0</span></div>
+      <div class="footer-stat-item">Settlements: <span id="statSettlements">0</span></div>
+      <div class="footer-stat-item">Mountains: <span id="statMountains">0</span></div>
+      <div class="footer-stat-item">Trees: <span id="statTrees">0</span></div>
+    </div>
+  </footer>
+
+  <!-- Inline Label Editor Modal / Popover -->
+  <div id="labelEditModal" class="label-edit-popover">
+    <div class="popover-title">Edit Place Name</div>
+    <input type="text" id="labelEditInput" class="text-input" placeholder="Enter new name...">
+    <div class="popover-btn-group">
+      <button id="labelCancelBtn" class="strip-btn">Cancel</button>
+      <button id="labelDeleteBtn" class="strip-btn" style="color:#ef4444;">Delete</button>
+      <button id="labelSaveBtn" class="strip-btn accent">Save</button>
+    </div>
+  </div>
+
+  <!-- Region Detail Inspector Modal (from reference image) -->
+  <div id="regionModal" class="modal-overlay">
+    <div class="modal-card region-inspector-card">
+      <div class="region-modal-header">
+        <div>
+          <h2 id="regionModalTitle" class="about-title">The Zhuldahn Dynasty Region</h2>
+          <div class="about-version-tag">High-Detail Regional Zoom Inspector • Region Sector</div>
+        </div>
+        <button id="closeRegionBtn" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="region-view-layout">
+        <div class="region-canvas-box">
+          <canvas id="regionCanvas" width="900" height="600"></canvas>
+        </div>
+        <div class="region-sidebar-info">
+          <div class="region-minimap-container">
+            <canvas id="regionMinimap" width="220" height="150"></canvas>
+          </div>
+          <div class="region-poi-list">
+            <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px;">Region Landmarks & POIs</h4>
+            <div id="regionPoiContainer" class="region-poi-scroll"></div>
+          </div>
+          <button id="exportRegionPngBtn" class="btn-action primary" style="width: 100%; margin-top: 8px;">Export Region PNG</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lottie Success Check Toast Notification -->
+  <div id="successToast" class="success-toast">
+    <div id="successCheckContainer" class="success-check-box"></div>
+    <span id="successToastMsg" class="success-toast-msg">Map Exported Successfully!</span>
+  </div>
+
+  <!-- About Section Modal -->
+  <div id="aboutModal" class="modal-overlay">
+    <div class="modal-card">
+      <button id="closeAboutBtn" class="modal-close-btn" title="Close">&times;</button>
+      <div class="about-hero">
+        <img src="assets/brand-about.png" alt="Axis Tools" class="about-logo-img">
+      </div>
+      <div class="about-content">
+        <h2 class="about-title">Axis Map Generator</h2>
+        <div class="about-version-tag">Version 2.0.0 Native Edition</div>
+        <p class="about-desc">
+          A clean, minimal, modern procedural cartography workstation designed for worldbuilders, game developers, authors, and tabletop RPG creators.
+        </p>
+        <div class="about-meta-grid">
+          <div class="about-meta-item">
+            <span class="meta-label">Author</span>
+            <span class="meta-value">Mahdi Kareem</span>
+          </div>
+          <div class="about-meta-item">
+            <span class="meta-label">Copyright</span>
+            <span class="meta-value">© 2026 Axis Tools</span>
+          </div>
+          <div class="about-meta-item">
+            <span class="meta-label">Platform</span>
+            <span class="meta-value">Tauri v2 Native</span>
+          </div>
+          <div class="about-meta-item">
+            <span class="meta-label">Styles</span>
+            <span class="meta-value">13 Unique Themes</span>
+          </div>
+        </div>
+        <div class="about-features-list">
+          <div>• 13 Themes: Classic Fantasy Parchment, Watercolor, Verdant Realm, Atlas, Minimal Ink, Dark Mode, Cyberpunk, Hologram, Pirate, Pixel RPG, Steampunk & Blueprint.</div>
+          <div>• Interactive in-canvas label dragging & instant click-to-edit renaming.</div>
+          <div>• Multi-realm political territories with heraldic kingdom badges and named trenches.</div>
+          <div>• Hand-drawn isometric mountains, foothill mounds, and clustered tree groves.</div>
+          <div>• High-Detail Regional Zoom Inspector with bounding minimap overview.</div>
+          <div>• 16-bit Grayscale Heightmap export for 3D terrain in Blender & Unreal Engine 5.</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="closeAboutBtn2" class="btn-action primary" style="width: 100%;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="libs/lottie.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
